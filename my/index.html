@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>내 활동 페이지 · 농투스와 떠나는 2026년 농촌일손여행</title>
+<meta property="og:title" content="내 활동 페이지 — 복합형 농촌일손여행">
+<meta property="og:image" content="https://hyunjongki.github.io/nongchon/og_card.png">
+<style>body{font-family:-apple-system,'Pretendard','Malgun Gothic',sans-serif;background:#f4faf6;
+ display:flex;align-items:center;justify-content:center;height:100vh;margin:0;color:#0c5a27}
+ .b{text-align:center;padding:20px} .b img{width:104px} .b p{margin:12px 0 0;font-size:14px}
+ .b a{display:inline-block;margin-top:14px;background:#1c8a3c;color:#fff;text-decoration:none;
+       font-weight:700;padding:12px 22px;border-radius:12px;font-size:15px}</style>
+</head><body><div class="b">
+<img src="https://hyunjongki.github.io/nongchon/nongtus.png" alt="농투스">
+<p>🌾 내 활동 페이지로 이동 중입니다…</p>
+<a id="go" href="#">바로 열기</a>
+</div>
+<script>
+(function(){
+  var t = new URLSearchParams(location.search).get('t') || '';
+  var fb = "https://ftp-registry-tribute-what.trycloudflare.com";
+  function go(base){
+    var u = base.replace(/\/$/, '') + '/wh/my/' + encodeURIComponent(t);
+    try{ document.getElementById('go').href = u; }catch(e){}
+    if (t) location.replace(u);
+  }
+  try {
+    var x = new XMLHttpRequest();
+    x.open('GET', '../target.txt?t=' + Date.now(), true);
+    x.timeout = 5000;
+    x.onload = function(){ var b = (x.responseText || '').trim();
+      go(/^https:\/\//.test(b) ? b : fb); };
+    x.onerror = x.ontimeout = function(){ go(fb); };
+    x.send();
+  } catch(e) { go(fb); }
+})();
+</script>
+</body></html>
